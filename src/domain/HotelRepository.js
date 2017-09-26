@@ -4,6 +4,7 @@ import ENV from '../../config/env';
 
 const RAKUTEN_APP_ID = ENV.RAKUTEN_API_KEY;
 
+// eslint-disable-next-line import/prefer-default-export
 export const searchHotelByLocation = (location) => {
   const params = {
     applicationId: RAKUTEN_APP_ID,
@@ -19,6 +20,8 @@ export const searchHotelByLocation = (location) => {
           id: basicInfo.hotelNo,
           name: basicInfo.hotelName,
           url: basicInfo.hotelInformationUrl,
+          thumbUrl: basicInfo.hotelThumbnailUrl,
+          price: basicInfo.hotelMinCharge,
         };
       }),
     );
