@@ -16,12 +16,16 @@ export const searchHotelByLocation = (location) => {
     .then(result =>
       result.data.hotels.map((hotel) => {
         const basicInfo = hotel.hotel[0].hotelBasicInfo;
+        const price = basicInfo.hotelMinCharge;
+
         return {
           id: basicInfo.hotelNo,
           name: basicInfo.hotelName,
           url: basicInfo.hotelInformationUrl,
           thumbUrl: basicInfo.hotelThumbnailUrl,
-          price: basicInfo.hotelMinCharge,
+          price: price ? `${price}円` : '空室なし',
+          reviewAverage: basicInfo.reviewAverage,
+          reviewCount: basicInfo.reviewCount,
         };
       }),
     );
